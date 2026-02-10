@@ -1,10 +1,19 @@
 from flask import Flask
+from config.config import DEBUG, PORT
+from flask_cors import CORS
+from routers.login_router import login_routes
+from routers.home import home
 
 app = Flask(__name__)
 
-@app.route("/")
-def home():
-    return "Hola Mundo con Flask 🚀"
+#habilitando cors
+CORS(app)
+
+
+#routes
+app.register_blueprint(home)
+app.register_blueprint(login_routes)
+
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=DEBUG, port=PORT)
