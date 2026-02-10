@@ -4,7 +4,7 @@ from config.config import MONGO_URI
 
 ###inicializando conexion a base datos
 client = MongoClient(MONGO_URI)
-db = client['bovinsoft']
+db = client['SCI']
 
 ##funcion para obtener una collection
 def collections(collection):

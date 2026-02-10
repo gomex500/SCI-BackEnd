@@ -63,13 +63,13 @@ def login(collections):
         user_instance = UserModel(data)
 
         # Validar si el correo electrónico existe
-        if not validacion_email(collections, user_instance.email):
+        if not validacion_email(collections, user_instance.userName):
             response = jsonify({"message": "El Usuario no existe"})
             response.status_code = 401
             return response
 
         # Obtener el documento del usuario
-        user_doc = collections.find_one({'email': user_instance.email})
+        user_doc = collections.find_one({'userName': user_instance.userName})
         user_data = {
             "nombre": user_doc['nombre'],
             "apellido": user_doc['apellido'],
